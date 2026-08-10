@@ -91,8 +91,9 @@ nvim/
 | Keymap           | Modo   | Ação                                          |
 | ---------------- | ------ | --------------------------------------------- |
 | `<leader>r`      | Normal | Roda o arquivo atual no terminal flutuante    |
+| `<leader>c`      | Normal | Abre uma nova janela para customizar RGB      |
 | `<C-t>`          | Normal | Abre/fecha terminal flutuante                 |
-| `<C-h/j/k/l>`   | Normal | Navega entre splits                           |
+| `<C-h/j/k/l>`   | Normal | Navega entre splits                            |
 | `J` / `K`        | Visual | Move seleção para baixo / acima               |
 | `<C-d>` / `<C-u>` | Normal | Scroll centralizado no cursor                |
 | `p`              | Visual | Cola sem sobrescrever o clipboard             |
@@ -108,6 +109,7 @@ O `<leader>r` suporta: Python, JavaScript, TypeScript, C, C++, Go, Rust, Shell/B
 
 ## Opções Notáveis
 
+- `vscode-color-highlight` - preview de cores em quadrado e GUI para troca de cores
 - `relativenumber` + `number` — número relativo com absoluto na linha atual
 - `scrolloff = 8` — 8 linhas de contexto ao rolar
 - `tabstop/shiftwidth = 4`, `expandtab` — tabs como 4 espaços

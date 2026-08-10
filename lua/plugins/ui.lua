@@ -1,5 +1,4 @@
 return {
-  -- Statusline customizada (config em lua/config/lualine.lua)
   {
     "nvim-lualine/lualine.nvim",
     init = function()
@@ -14,32 +13,27 @@ return {
       require("config.lualine")
     end,
   },
-
-  -- Mostra cores CSS inline (#ff0000 fica vermelho no editor)
   {
-    "NvChad/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("colorizer").setup({
-        filetypes = { "*" },
-        user_default_options = {
+    opts = {
+      options = {
+        parsers = {
           css = true,
-          html = true,
-          tailwind = true,
-          RRGGBB = true,
-          rgb_fn = true,
-          hsl_fn = true,
+          tailwind = { enable = true },
+          xterm = { enable = true },
         },
-      })
-      vim.api.nvim_create_autocmd("BufEnter", {
-        callback = function()
-          require("colorizer").attach_to_buffer(0)
-        end,
-      })
-    end,
+        display = {
+          mode = { "foreground", "virtualtext" },
+          virtualtext = {
+            char = "■",
+            position = "before",
+            hl_mode = "foreground",
+          },
+        },
+      },
+    },
   },
-
-  -- Color picker igual VSCode (abre com <leader>cp)
   {
     "uga-rosa/ccc.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -48,13 +42,30 @@ return {
     },
     opts = {
       highlighter = {
-        auto_enable = false, -- deixa só o colorizer fazer isso
-        lsp = true,
+        auto_enable = false,
+        lsp = false,
       },
     },
   },
-
-  -- Indentação visual (linhas guia)
+  {
+    "eero-lehtinen/oklch-color-picker.nvim",
+    event = "VeryLazy",
+    version = "*",
+    keys = {
+      {
+        "<leader>v",
+        function()
+          require("oklch-color-picker").pick_under_cursor()
+        end,
+        desc = "Color Picker (mouse, OKLCH)",
+      },
+    },
+    opts = {
+      highlight = {
+        enabled = false,
+      },
+    },
+  },
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
